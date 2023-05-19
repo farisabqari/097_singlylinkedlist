@@ -156,4 +156,9 @@ int main()
 			else
 				cout << endl << "Data dengan nomor mahasiswa " << nim << "berhasil dihapus" << endl;
 		}
+		break;
+		case '3':
+		{
+			mhs.traverse();
+		}
 		
