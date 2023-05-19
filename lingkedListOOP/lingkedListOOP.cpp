@@ -8,3 +8,7 @@ public:
 	int noMhs;
 	char nama[20];
 	Node* next;
+};
+
+class List
+{
