@@ -71,3 +71,53 @@ void List::addNode()	//Menambah sebuah Node ke dalam list
 	previous->next = nodeBaru;
 }
 
+bool List::listEmpty()
+{
+	if (START == NULL)
+		return true;
+	else
+		return false;
+}
+
+bool List::delNode(int nim) //Menghapus node dari dalam list
+{
+	Node* current, * previous;
+	if (Search(nim, &previous, &current) == false)
+		return false;
+	previous->next = current->next;
+	if (current == START)
+		START = START->next;
+
+	delete current;
+	return true;
+}
+
+//check apakah node yang dimaksud ada di dalam list atau tidak
+bool List::Search(int nim, Node** previous, Node** current)
+{
+	*previous = START;
+	*current = START;
+	while ((*current != NULL) && (nim != (*current)->noMhs))
+	{
+		*previous = *current;
+		*current = (*current)->next;
+	}
+	return (*current != NULL);
+}
+
+void List::traverse()//mengunjungi dan membaca data dalam list
+{
+	if (listEmpty())
+		cout << "\nList Kosong";
+	else
+	{
+		cout << endl << "Data di dalam list adalah: " << endl;
+		Node* currentNode;
+		for (currentNode = START; currentNode != NULL; currentNode = currentNode->next)
+		{
+			cout << currentNode->noMhs << "		" << currentNode->nama << "\n";
+		}
+		cout << endl;
+	}
+}
+
