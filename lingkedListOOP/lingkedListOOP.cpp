@@ -50,4 +50,24 @@ void List::addNode()	//Menambah sebuah Node ke dalam list
 		nodeBaru->next = START;
 		START = nodeBaru;
 		return;
-	
+	}
+	Node* previous, * current;
+
+	current = START;
+	previous = START;
+
+	while ((current != NULL) && (nim >= current->noMhs))
+	{
+		if (nim == current->noMhs)
+		{
+			cout << "\nDuplikasi noMhs tidak diijinkan\n";
+			return;
+		}
+		previous = current;
+		current = current->next;
+	}
+	//jika loop di atas dieksekusi, previous dan current akan menempati posisi dimana ditempatkan
+	nodeBaru->next = current;
+	previous->next = nodeBaru;
+}
+
